@@ -6,7 +6,7 @@
 Summary:  3D desktop effects tools
 Name:     drak3d
 Version:  1.5
-Release:  %mkrel 1
+Release:  %mkrel 2
 Source0:  %name-%version.tar.bz2
 License:  GPL
 Group:    System/Configuration/Hardware
@@ -47,6 +47,26 @@ SCRIPT:
 exec /usr/sbin/drak3d
 EOF
 
+# consolehelper config
+ln -s %{_bindir}/consolehelper %{buildroot}%{_bindir}/drak3d
+mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
+cat > %{buildroot}%{_sysconfdir}/security/console.apps/drak3d <<EOF
+USER=<user>
+PROGRAM=/usr/sbin/drak3d
+FALLBACK=false
+SESSION=true
+EOF
+
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+cat > %{buildroot}%{_sysconfdir}/pam.d/drak3d <<EOF
+#%PAM-1.0
+auth       sufficient   pam_rootok.so
+auth       required     pam_console.so
+auth       include      system-auth
+account    required     pam_permit.so
+session    optional     pam_xauth.so
+EOF
+
 %post
 %update_menus
 
@@ -59,9 +79,11 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc COPYING ChangeLog
+%config(noreplace) %{_sysconfdir}/pam.d/drak3d
+%config(noreplace) %{_sysconfdir}/security/console.apps/drak3d
+%{_bindir}/drak3d
 %{_sbindir}/*
 /usr/lib/libDrakX/icons/*
 %{_sysconfdir}/X11/wmsession.d/29drak3d
 /usr/lib/libDrakX/Xconfig/glx.pm
-
 
