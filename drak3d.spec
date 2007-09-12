@@ -6,13 +6,15 @@
 Summary:  3D desktop effects tools
 Name:     drak3d
 Version:  1.5
-Release:  %mkrel 2
+Release:  %mkrel 3
 Source0:  %name-%version.tar.bz2
 License:  GPL
 Group:    System/Configuration/Hardware
 Url:      http://wiki.mandriva.com/en/Docs/Desktop/Accelerated_Desktop
 BuildRequires: perl-MDK-Common-devel gettext
 Requires: drakxtools-backend => %drakxtools_required_version
+# we need the common pam usermode config files
+Requires: usermode-consoleonly >= 1.92-4mdv2008.0
 BuildRoot: %_tmppath/%name-%version-buildroot
 # for program:
 Conflicts: drakxtools <= %drakxtools_conflicted_version
@@ -58,14 +60,7 @@ SESSION=true
 EOF
 
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-cat > %{buildroot}%{_sysconfdir}/pam.d/drak3d <<EOF
-#%PAM-1.0
-auth       sufficient   pam_rootok.so
-auth       required     pam_console.so
-auth       include      system-auth
-account    required     pam_permit.so
-session    optional     pam_xauth.so
-EOF
+ln -sf %{_sysconfdir}/pam.d/mandriva-simple-auth %{buildroot}%{_sysconfdir}/pam.d/drak3d
 
 %post
 %update_menus
