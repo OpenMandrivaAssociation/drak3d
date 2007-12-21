@@ -15,6 +15,7 @@ BuildRequires: perl-MDK-Common-devel gettext
 Requires: drakxtools-backend => %drakxtools_required_version
 # we need the common pam usermode config files
 Requires: usermode-consoleonly >= 1.92-4mdv2008.0
+BuildRoot: %_tmppath/%name-%version-buildroot
 # for program:
 Conflicts: drakxtools <= %drakxtools_conflicted_version
 # for man pages:
