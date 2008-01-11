@@ -6,7 +6,7 @@
 Summary:  3D desktop effects tools
 Name:     drak3d
 Version:  1.11
-Release:  %mkrel 1
+Release:  %mkrel 2
 Source0:  %name-%version.tar.bz2
 License:  GPL
 Group:    System/Configuration/Hardware
