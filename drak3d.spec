@@ -62,12 +62,6 @@ EOF
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 ln -sf %{_sysconfdir}/pam.d/mandriva-simple-auth %{buildroot}%{_sysconfdir}/pam.d/drak3d
 
-%post
-%update_menus
-
-%postun
-%clean_menus
-
 %clean
 rm -rf %{buildroot}
 
