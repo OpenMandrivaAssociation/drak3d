@@ -1,8 +1,6 @@
 %define drakxtools_required_version  10.4.90-1mdv2007.0
 %define drakxtools_conflicted_version  10.4.89
 
-%define libname %mklibname %{name}
-
 Summary:  3D desktop effects tools
 Name:     drak3d
 Version:  1.14
