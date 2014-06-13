@@ -1,7 +1,7 @@
 Summary:	3D desktop effects tools
 Name:		drak3d
 Version:	1.29
-Release:	12
+Release:	13
 License:	GPLv2
 Group:		System/Configuration/Hardware
 Url:		http://wiki.mandriva.com/en/Docs/Desktop/Accelerated_Desktop
