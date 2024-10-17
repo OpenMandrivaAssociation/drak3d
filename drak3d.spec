@@ -4,7 +4,7 @@ Version:	1.29
 Release:	16
 License:	GPLv2
 Group:		System/Configuration/Hardware
-Url:		http://wiki.mandriva.com/en/Docs/Desktop/Accelerated_Desktop
+Url:		https://wiki.mandriva.com/en/Docs/Desktop/Accelerated_Desktop
 Source0:	%{name}-%{version}.tar.bz2
 BuildArch:	noarch
 BuildRequires:	gettext
