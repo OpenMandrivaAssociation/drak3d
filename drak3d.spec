@@ -7,6 +7,7 @@ Group:		System/Configuration/Hardware
 Url:		https://wiki.mandriva.com/en/Docs/Desktop/Accelerated_Desktop
 Source0:	%{name}-%{version}.tar.bz2
 BuildArch:	noarch
+BuildRequires:	make
 BuildRequires:	gettext
 BuildRequires:	perl-MDK-Common-devel
 Requires:	drakxtools-backend
